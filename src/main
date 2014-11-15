@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# main script
-
-DEST=`date +%Y%m%d%H` 
-echo $DEST
