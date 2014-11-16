@@ -7,7 +7,7 @@ PWD=`pwd`
 
 # check for URL as arguement
 
-if [ ! -f "$1" ]
+if [ $# -eq 0 ]
 then 
     echo "Please specify a 4chan thread URL"
     exit 1
@@ -24,16 +24,18 @@ wget -O $PWD/$DEST/temp-html $1
 # create the text file full of image URLs
 # file first, then directory
 
-images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url.txt 
+./images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url 
 
 # wget the image URLs
 
 old_IFS=$IFS
 IFS=$'\n'
-for line in $(cat $PWD/$DEST/temp-url.txt)
+for line in $(cat $PWD/$DEST/temp-url)
 do
-    echo $line
+#    echo $line
 done
 IFS=$old_IFS
 
-
+# cleanup
+# rm $PWD/DEST/temp-html
+# rm $PWD/DEST/temp-url

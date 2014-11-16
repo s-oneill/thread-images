@@ -37,15 +37,13 @@ int main(int argc, char** argv)
         cout << "failed to open file" << endl;
         exit(1);
     }
-    // write the words to a temp file and remove the punctuation
   
     while (instream.good()) {
         instream >> c;
-        outstream << c;
+        outstream << c << endl;
     }  
     
   
-    // close and reopen the newly created modified file as well as the echo file
     instream.close();
     outstream.close();
   
