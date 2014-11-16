@@ -1,10 +1,13 @@
-
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
+
+//Global Constants
+string IMG_MARKER = "href=\"//i.4cdn.org/";
+string URL_START  = "\"//";
 
 ifstream instream;
 ofstream outstream;
@@ -25,10 +28,13 @@ void init_outstream(char * outfile){
 }
 */
 
+//Extracts the URL from an inputted string
+string extractURL(string input);
+
 //------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-    char c;
+    string str;
 
     instream.open(argv[1]);
     outstream.open(argv[2]);
@@ -39,11 +45,11 @@ int main(int argc, char** argv)
     }
   
     while (instream.good()) {
-        instream >> c;
-        outstream << c << endl;
+        instream >> str;
+        if(str.find(IMG_MARKER) != string::npos)
+            outstream << extractURL(str) << endl;
     }  
     
-  
     instream.close();
     outstream.close();
   
@@ -51,4 +57,15 @@ int main(int argc, char** argv)
 }
 
 //----------------------------------------------------------------------------
+
+string extractURL(string input)
+{
+    string extractedURL = "";
+    size_t index = input.find(URL_START) + URL_START.size();
+    for(size_t i = index; i < input.size() - 1; i++) { //-1 is for ending "
+        extractedURL.push_back(input[i]);
+    }
+    return extractedURL;
+}
+
 //----------------------------------------------------------------------------
