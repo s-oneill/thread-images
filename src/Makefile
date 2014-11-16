@@ -1,11 +1,11 @@
 
 ##### Source files and executable ############################################
 
-SRCS 		= images.cpp 
+SRCS 		= images-file.cpp 
 
-OBJECTS 	= images.o 
+OBJECTS 	= images-file.o 
 
-EXECNAME 	= images
+EXECNAME 	= images-file
 
 ##### Libraries and paths ####################################################
 

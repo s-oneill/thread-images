@@ -1,2 +1,0 @@
-Testing git on arch
-test2
