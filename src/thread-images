@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# main script
+
+DEST=`date +%Y%m%d%H`
+PWD=`pwd`
+
+# check for URL as arguement
+
+if [ $1 -eq 0]
+then
+    echo "Please specify a 4chan thread URL"
+    exit
+fi
+
+# make the pic directory
+
+mkdir $PWD/$DEST
+
+# get the URL
+
+wget -O $PWD/$DEST/temp-html $1
+
+# create the text file full of image URLs
+
+images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url.txt 
+
+# wget the image URLs
+
+old_IFS=$IFS
+IFS=$'\n'
+for line in $(cat $PWD/$DEST/temp-url.txt)
+do
+    echo $line
+done
+IFS=$old_IFS
+
+

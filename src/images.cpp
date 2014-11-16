@@ -1,6 +1,3 @@
-// Shane O'Neill
-// Lab1 - CISC220 - 
-// Modified wordbyword to remove punction except for apostrophe's using a temporary file
 
 
 #include <cstdlib>
@@ -18,7 +15,7 @@ ofstream outstream;
 // initialize ifstream with proper file
 void init_instream(int argc, char ** argv){
     
-    if (argc < 2){
+    if (argc < 2 ){
         cout << "please specify a URL within the bash script" << endl; 
         exit(1);
     }
@@ -28,7 +25,7 @@ void init_instream(int argc, char ** argv){
 
 // initialize ofstream with proper output file
 void init_outstream(char **argv){
-// ...
+    
 }
 
 //------------------------------------------------------------------------
