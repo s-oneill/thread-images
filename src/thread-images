@@ -32,7 +32,7 @@ old_IFS=$IFS
 IFS=$'\n'
 for line in $(cat $PWD/$DEST/temp-url)
 do
-#    echo $line
+    wget -P $PWD/$DEST $line
 done
 IFS=$old_IFS
 
