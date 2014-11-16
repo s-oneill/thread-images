@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -30,11 +31,14 @@ void init_outstream(char * outfile){
 
 //Extracts the URL from an inputted string
 string extractURL(string input);
+//Checks for duplicate URLs
+bool isDupe(string input, vector<string> &urls);
 
 //------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
     string str;
+    vector<string> urls;
 
     instream.open(argv[1]);
     outstream.open(argv[2]);
@@ -46,10 +50,17 @@ int main(int argc, char** argv)
   
     while (instream.good()) {
         instream >> str;
-        if(str.find(IMG_MARKER) != string::npos)
-            outstream << extractURL(str) << endl;
+        if(str.find(IMG_MARKER) != string::npos) {
+            if(!isDupe(extractURL(str), urls)){
+                urls.push_back(extractURL(str));
+            }
+        }
     }  
     
+    for(size_t i = 0; i < urls.size(); i++){
+        outstream << urls[i] << endl;
+    }
+
     instream.close();
     outstream.close();
   
@@ -68,4 +79,11 @@ string extractURL(string input)
     return extractedURL;
 }
 
+bool isDupe(string input, vector<string> &urls) {
+    for(size_t i = 0; i < urls.size(); i++){
+        if(input == urls[i])
+                return true;
+    }
+    return false;
+}
 //----------------------------------------------------------------------------
