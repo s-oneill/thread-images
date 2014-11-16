@@ -7,10 +7,10 @@ PWD=`pwd`
 
 # check for URL as arguement
 
-if [ $1 -eq 0]
-then
+if [ ! -f "$1" ]
+then 
     echo "Please specify a 4chan thread URL"
-    exit
+    exit 1
 fi
 
 # make the pic directory
@@ -22,6 +22,7 @@ mkdir $PWD/$DEST
 wget -O $PWD/$DEST/temp-html $1
 
 # create the text file full of image URLs
+# file first, then directory
 
 images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url.txt 
 

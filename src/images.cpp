@@ -1,5 +1,4 @@
 
-
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -12,38 +11,37 @@ ofstream outstream;
 
 //------------------------------------------------------------------------
 
+/*
 // initialize ifstream with proper file
-void init_instream(int argc, char ** argv){
-    
-    if (argc < 2 ){
-        cout << "please specify a URL within the bash script" << endl; 
-        exit(1);
-    }
+void init_instream(char * infile){
     
     instream.open(argv[1]);
+    
 }
 
 // initialize ofstream with proper output file
-void init_outstream(char **argv){
+void init_outstream(char * outfile){
     
 }
+*/
 
 //------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-    string s;
+    char c;
 
+    instream.open(argv[1]);
+    outstream.open(argv[2]);
 
-    // get ready to write to TEMP file
-  
-    outstream.open("temp.txt");
- 
+    if (instream.fail()){
+        cout << "failed to open file" << endl;
+        exit(1);
+    }
     // write the words to a temp file and remove the punctuation
   
-    while (instream >> s) {
-    
-        outstream << s << " ";
-
+    while (instream.good()) {
+        instream >> c;
+        outstream << c;
     }  
     
   
