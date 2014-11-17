@@ -15,40 +15,29 @@ ofstream outstream;
 
 //------------------------------------------------------------------------
 
-/*
-// initialize ifstream with proper file
-void init_instream(char * infile){
-    
-    instream.open(argv[1]);
-    
-}
-
-// initialize ofstream with proper output file
-void init_outstream(char * outfile){
-    
-}
-*/
 
 //Extracts the URL from an inputted string
 string extractURL(string input);
 //Checks for duplicate URLs
 bool isDupe(string input, vector<string> &urls);
 
+void openFile(char *filename);
+
+
 //------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
     
-    createDir();
-
     string str;
     vector<string> urls;
 
     instream.open(argv[1]);
     outstream.open(argv[2]);
 
+
     if (instream.fail()){
-        cout << "failed to open file" << endl;
-        exit(1);
+          cout << "failed to open file" << endl;
+          exit(1);
     }
   
     while (instream.good()) {
@@ -89,7 +78,5 @@ bool isDupe(string input, vector<string> &urls) {
     }
     return false;
 }
-void createDir(){
-    system(DEST=`date +    
-}
+
 //----------------------------------------------------------------------------

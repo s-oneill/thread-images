@@ -15,6 +15,10 @@ Files:
     1. thread-images -- Bash Script
     2. images-file  -- C++ Program
 
+Dependencies:
+    1. wget
+    2. gcc compiler
+
 Design:
     This program uses a combination of bash scripting and a C++ program. When
 called with a thread url as a CLI argument, the bash script will wget the raw

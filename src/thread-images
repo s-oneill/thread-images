@@ -2,44 +2,52 @@
 
 # main script
 
-DEST=`date +%Y%m%d%H%M`
 PWD=`pwd`
 
-# check for URL as arguement
+# format the destination for PNGs
 
 if [ $# -eq 0 ]
 then 
     echo "Please specify a 4chan thread URL"
     exit 1
+elif [ $# -eq 1 ]
+then
+    DEST=$PWD/`date +%Y%m%d%H%M`
+    wget -q -O $DEST/temp-htlm $1
+elif [ $# -eq 2 ]
+then
+    DEST=$PWD/$1
+    if [ ! -d "$DEST" ]
+    then
+        mkdir $DEST
+    fi
+    wget -q -O $DEST/temp-html $2
+else
+    echo "too many arguements"
+    exit 1
 fi
-
-# make the pic directory
-
-mkdir $PWD/$DEST
 
 # get the URL
 
 echo "downloading images..."
 
-wget -q -O $PWD/$DEST/temp-html $1
-
 # create the text file full of image URLs
 # file first, then directory
 
-images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url 
+images-file $DEST/temp-html $DEST/temp-url 
 
 # wget the image URLs
 
 old_IFS=$IFS
 IFS=$'\n'
-for line in $(cat $PWD/$DEST/temp-url)
+for line in $(cat $DEST/temp-url)
 do
-    wget -q -P $PWD/$DEST $line
+    wget -q -P $DEST $line
 done
 IFS=$old_IFS
 
 echo "done."
 
 # cleanup
-rm $PWD/$DEST/temp-html
-rm $PWD/$DEST/temp-url
+rm $DEST/temp-html
+rm $DEST/temp-url
