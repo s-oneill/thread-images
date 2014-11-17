@@ -41,5 +41,5 @@ IFS=$old_IFS
 echo "done."
 
 # cleanup
-rm $PWD/DEST/temp-html
-rm $PWD/DEST/temp-url
+rm $PWD/$DEST/temp-html
+rm $PWD/$DEST/temp-url
