@@ -2,7 +2,7 @@
 
 # main script
 
-DEST=`date +%Y%m%d%H`
+DEST=`date +%Y%m%d%H%M`
 PWD=`pwd`
 
 # check for URL as arguement
@@ -19,7 +19,9 @@ mkdir $PWD/$DEST
 
 # get the URL
 
-wget -O $PWD/$DEST/temp-html $1
+echo "downloading images..."
+
+wget -q -O $PWD/$DEST/temp-html $1
 
 # create the text file full of image URLs
 # file first, then directory
@@ -32,9 +34,11 @@ old_IFS=$IFS
 IFS=$'\n'
 for line in $(cat $PWD/$DEST/temp-url)
 do
-    wget -P $PWD/$DEST $line
+    wget -q -P $PWD/$DEST $line
 done
 IFS=$old_IFS
+
+echo "done."
 
 # cleanup
 # rm $PWD/DEST/temp-html
