@@ -9,15 +9,19 @@ and call the program as follows:
 
     thread-images boards.4chan.org/<BOARD>/thread/<NUM>
 
-    The output directory will be the current working directory.
+    thread-images [DIRECTORY] boards.4chan.org/<BOARD>/thread/<NUM>
+
+The output directory will be the current working directory.
 
 Files:
-    1. thread-images -- Bash Script
-    2. images-file  -- C++ Program
 
-Dependencies:
-    1. wget
-    2. gcc compiler
+    thread-images -- Bash Script
+    images-file  -- C++ Program
+
+Dependencies
+
+    wget
+    gcc compiler
 
 Design:
     This program uses a combination of bash scripting and a C++ program. When
