@@ -4,21 +4,19 @@ thread-images
 automated image grabber for 4chan threads
 
 How to use:
-    Place both of the files thread-images and images-file into a PATH directory
+    Place both of the files thread-images and images-file into a PATH directory (/usr/local/bin etc)
 and call the program as follows:
 
     thread-images boards.4chan.org/<BOARD>/thread/<NUM>
 
     thread-images [DIRECTORY] boards.4chan.org/<BOARD>/thread/<NUM>
 
-The output directory will be the current working directory.
-
 Files:
 
     thread-images -- Bash Script
     images-file  -- C++ Program
 
-Dependencies
+Dependencies:
 
     wget
     gcc compiler
