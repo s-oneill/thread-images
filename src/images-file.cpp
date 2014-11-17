@@ -37,6 +37,9 @@ bool isDupe(string input, vector<string> &urls);
 //------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
+    
+    createDir();
+
     string str;
     vector<string> urls;
 
@@ -85,5 +88,8 @@ bool isDupe(string input, vector<string> &urls) {
                 return true;
     }
     return false;
+}
+void createDir(){
+    system(DEST=`date +    
 }
 //----------------------------------------------------------------------------
