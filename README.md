@@ -19,7 +19,6 @@ Files:
 Dependencies:
 
     wget
-    gcc compiler
 
 Design:
     This program uses a combination of bash scripting and a C++ program. When
