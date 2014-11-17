@@ -13,7 +13,8 @@ then
 elif [ $# -eq 1 ]
 then
     DEST=$PWD/`date +%Y%m%d%H%M`
-    wget -q -O $DEST/temp-htlm $1
+    mkdir $DEST
+    wget -q -O $DEST/temp-html $1
 elif [ $# -eq 2 ]
 then
     DEST=$PWD/$1
