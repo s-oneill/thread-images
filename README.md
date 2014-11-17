@@ -3,16 +3,25 @@ thread-images
 
 automated image grabber for 4chan threads
 
-Goals:
-    The ultimate goal of this project is to create a program that will be able
-to take a given thread on 4chan and download all the images in that thread and
-store them locally. 
+How to use:
+    Place both of the files thread-images and images-file into a PATH directory
+and call the program as follows:
+
+    thread-images boards.4chan.org/<BOARD>/thread/<NUM>
+
+    The output directory will be the current working directory.
+
+Files:
+    1. thread-images -- Bash Script
+    2. images-file  -- C++ Program
 
 Design:
-    Our deisgn of this program is still in its infancy, the general idea will be
-to use some method of retrieving the thread, whether it be downloading the
-entire thread or parsing through the page using data mining techniques.
-Analyzing the elements of the thread, we will identify files that have the
-appropriate file extensions that we want to download (.gif, .png, .jpg, .webm,
-etc). After identification we will retrieve the files themself, possibly through
-the use of something like wget and place them in a local repository.
+    This program uses a combination of bash scripting and a C++ program. When
+called with a thread url as a CLI argument, the bash script will wget the raw
+HTML from the thread and pass that file into the C++ program. The C++ program
+searches the HTML for a marker of image URLs, it then singles them out and
+removes any duplicates. The resulting image URLs are outputted into a temporary
+file containing the URLs. The bash script then takes that file with the image
+URLs and wgets them all into the directory.
+
+
