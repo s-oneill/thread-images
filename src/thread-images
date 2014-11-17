@@ -26,7 +26,7 @@ wget -q -O $PWD/$DEST/temp-html $1
 # create the text file full of image URLs
 # file first, then directory
 
-./images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url 
+images-file $PWD/$DEST/temp-html $PWD/$DEST/temp-url 
 
 # wget the image URLs
 
