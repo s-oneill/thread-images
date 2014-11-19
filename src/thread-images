@@ -20,7 +20,7 @@ then
     DEST=$1
     if [ ! -d "$DEST" ]
     then
-        mkdir $DEST
+        mkdir -p $DEST
     fi
     wget -q -O $DEST/temp-html $2
 else
