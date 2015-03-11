@@ -9,7 +9,6 @@ Dependencies:
     wget
 
 install:
-
     Place both of the files thread-images and images-file into a PATH directory (/usr/local/bin etc)
 and call via CLI as follows:
 
