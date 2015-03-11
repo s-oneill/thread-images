@@ -1,11 +1,17 @@
 thread-images
 =============
 
-automated image grabber for 4chan threads
+Automated image grabber for 4chan threads. Places all images of a thread into a
+given directory.
 
-How to use:
+Dependencies:
+
+    wget
+
+install:
+
     Place both of the files thread-images and images-file into a PATH directory (/usr/local/bin etc)
-and call the program as follows:
+and call via CLI as follows:
 
     thread-images boards.4chan.org/<BOARD>/thread/<NUM>
 
@@ -15,18 +21,3 @@ Files:
 
     thread-images -- Bash Script
     images-file  -- C++ Program
-
-Dependencies:
-
-    wget
-
-Design:
-    This program uses a combination of bash scripting and a C++ program. When
-called with a thread url as a CLI argument, the bash script will wget the raw
-HTML from the thread and pass that file into the C++ program. The C++ program
-searches the HTML for a marker of image URLs, it then singles them out and
-removes any duplicates. The resulting image URLs are outputted into a temporary
-file containing the URLs. The bash script then takes that file with the image
-URLs and wgets them all into the directory.
-
-
