@@ -19,4 +19,4 @@ and call via CLI as follows:
 Files:
 
     thread-images -- Bash Script
-    images-file  -- C++ Program
+    images-file	  -- C++ Program
