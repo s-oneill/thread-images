@@ -27,10 +27,11 @@ def process(fragment, imgs):
             imgs.append(extracted)
 
 def download(img,directory):
+    print("Downloading " + img)
     os.system("wget -q -P " + directory + " " + img)
 
 def main():
-
+    
     url = ""
     directory = ""
     imgs = []
@@ -39,8 +40,8 @@ def main():
         url = argv[1]
         directory = time.strftime("%H%M%S")
     elif len(argv) == 3:
-        directory == argv[2]
-        url = argv[3]
+        directory = argv[1]
+        url = argv[2]
     else:
         print("Incorrect format. see README")
         exit(1)
