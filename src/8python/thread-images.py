@@ -16,8 +16,8 @@ class Parser4(HTMLParser):
         super().__init__()
 
     def handle_starttag(self, tag, attrs):
-        if 
-        print(tag,attrs)
+        if 'img' in tag:
+            print(tag, attrs)
 
 class Parser8(HTMLParser):
     def __init__(self):
@@ -25,7 +25,16 @@ class Parser8(HTMLParser):
         super().__init__()
 
     def handle_starttag(self, tag, attrs):
-        print(tag,attrs)
+        # Only parse the 'anchor' tag.
+        if tag == "a":
+           # Check the list of defined attributes.
+           for name, value in attrs:
+               # If href is defined, print it.
+               if name == "href":
+                   base = 'https://media.8ch'
+                   if base in value[:len(base)]:
+                       print("found image ", value)
+                       self.links.append(value)
 
 class ParserLain(HTMLParser):
     def __init__(self):
@@ -33,7 +42,8 @@ class ParserLain(HTMLParser):
         super().__init__()
 
     def handle_starttag(self, tag, attrs):
-        print(tag,attrs)
+        if 'img' in tag:
+            print(tag, attrs)
 
 class ParserGeneric(HTMLParser):
     def __init__(self):
@@ -41,7 +51,8 @@ class ParserGeneric(HTMLParser):
         super().__init__()
 
     def handle_starttag(self, tag, attrs):
-        print(tag,attrs)
+        if 'img' in tag:
+            print(tag, attrs)
 
 def main(argv):
     thread = ""
