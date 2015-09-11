@@ -2,6 +2,7 @@
 #
 # mass image downloader for *chans
 
+import subprocess
 import os
 import urllib.request
 import argparse
@@ -33,7 +34,6 @@ class Parser8(HTMLParser):
                if name == "href":
                    base = 'https://media.8ch'
                    if base in value[:len(base)]:
-                       print("found image ", value)
                        self.links.append(value)
 
 class ParserLain(HTMLParser):
@@ -54,7 +54,7 @@ class ParserGeneric(HTMLParser):
         if 'img' in tag:
             print(tag, attrs)
 
-def main(argv):
+def main():
     thread = ""
     directory = time.strftime("%H%M%S")
     info = "image downloader for 4chan, 8chan, and lainchan"
@@ -70,10 +70,11 @@ def main(argv):
     if args.directory:
         directory = args.directory
         print("Found directory: ", directory)
-    parse(directory, thread)
+    links = parse(thread)
+    download(links, directory)
 
-def parse(directory, thread):
-    "parse and download"
+def parse(thread):
+    "parse and return list of links"
     parser = None
     parsed_uri = urlparse(thread)
     domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
@@ -91,9 +92,17 @@ def parse(directory, thread):
         parser.feed(str(page.decode('utf-8')))
     except Exception as e:
         print("An exception has occurred: ", e.value)
+    return parser.links
+
+def download(links, directory):
+    for url in links:
+        print("Downloading " + url + " to " + directory)
+        # DEBUGGING. UNCOMMENT LATER
+        subprocess.call(["wget","-q","-P",directory,url])
         
 def proper_request(url):
     "spoofs agent, as to not be declined by the site"
+    print("Requesting HTML... ")
     user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
     headers={'User-Agent':user_agent,} 
     request=urllib.request.Request(url,None,headers)
@@ -102,4 +111,8 @@ def proper_request(url):
     return data
 
 if __name__ == '__main__':
-    main(argv)
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Keyboard Interupt found. Exiting...")
+        exit()
