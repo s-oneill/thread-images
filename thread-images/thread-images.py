@@ -89,13 +89,13 @@ def main():
                         help='directory for the images',
                         action='store')
     parser.add_argument('thread',
-                        help='directory for the images',
+                        help='target thread',
                         action='store')
     parser.add_argument('-v', '--verbose',
-                        help='directory for the images',
+                        help='verbosely print actions',
                         action='store_true')
     parser.add_argument('-q', '--quiet',
-                        help='directory for the images',
+                        help='do not print actions',
                         action='store_true')
     args = parser.parse_args()
     thread = args.thread
