@@ -10,7 +10,8 @@ config = {
     'download_url': 'https://github.com/shoneill/thread-images',
     'author_email': 'oneill.shane.h@gmail.com',
     'version': '1.0',
-    'packages': ['wget'],
+    'scripts'=['bin/thread-images'],
+    'packages': ['thread-images'],
     'name': 'thread-images'
 }
 
