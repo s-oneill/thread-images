@@ -131,8 +131,9 @@ def parse(thread):
 
 def download(links, directory):
     for url in links:
-        if args.verbose: print("Downloading " + url + " to " + directory)
-        subprocess.call(["wget","-q","-P",directory,url])
+        #if args.verbose: print("Downloading " + url + " to " + directory)
+        subprocess.call(["wget","-nc","-q","-P",directory,url])
+                
         
 def proper_request(url):
     "spoofs agent, as to not be declined by the site"
