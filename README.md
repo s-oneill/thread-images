@@ -1,8 +1,7 @@
 thread-images
 =============
 
-Automated image grabber for imageboard threads. It places all images of a thread into a
-given directory with no duplicates.
+Automated image grabber for imageboard threads. It places all images of a thread into a given directory with no duplicates.
 
 ### Install
 
