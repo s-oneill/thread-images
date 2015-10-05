@@ -1,8 +1,8 @@
 thread-images
 =============
 
-Automated image grabber for 4/8/Lain/chan threads. Places all images of a thread into a
-given directory.
+Automated image grabber for imageboard threads. It places all images of a thread into a
+given directory with no duplicates.
 
 ### Install
 
