@@ -131,8 +131,12 @@ def parse(thread):
 
 def download(links, directory):
     for url in links:
-        #if args.verbose: print("Downloading " + url + " to " + directory)
-        subprocess.call(["wget","-nc","-q","-P",directory,url])
+        if args.quiet:
+            subprocess.call(["wget","-nc","-q","-P",directory,url])
+        elif args.verbose:
+            subprocess.call(["wget","-nc","-v","-P",directory,url])
+        else:
+            subprocess.call(["wget","-nc","-P",directory,url])
                 
         
 def proper_request(url):
