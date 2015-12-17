@@ -7,12 +7,10 @@ import threadimages
 
 config = {
     'description': 'image downloader',
-    'author': 'Shane ONeill',
-    'version': threadimages.__version__,
+    'version': threadimages.__version__0,
     'license': threadimages.__license__,
-    'url': 'https://github.com/shoneill/thread-images',
-    'download_url': 'https://github.com/shoneill/thread-images',
-    'author_email': 'oneill.shane.h@gmail.com',
+    'url': 'https://github.com/zeev0/thread-images',
+    'download_url': 'https://github.com/zeev0/thread-images',
     'version': '1.0',
     'scripts':['bin/thread-images'],
     'packages': ['threadimages'],
