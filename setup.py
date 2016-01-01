@@ -7,7 +7,7 @@ import threadimages
 
 config = {
     'description': 'image downloader',
-    'version': threadimages.__version__0,
+    'version': threadimages.__version__,
     'license': threadimages.__license__,
     'url': 'https://github.com/zeev0/thread-images',
     'download_url': 'https://github.com/zeev0/thread-images',
